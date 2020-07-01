@@ -1,0 +1,141 @@
+블록체인 2020_07_01 수업
+
+1. 우분투 16.04 LTS 까는중
+
+난 이미 깔려있으니 노는중
+
+build-essential 설치
+gmp 는 수학계산을 해주는 라이브러리
+go 언어를 설치
+git 설치
+tree 설치
+
+
+sudo apt-get install -y build-essential libgmp3-dev golang git tree
+한번에 설치해버리기 답은 y로 통일
+
+
+sudo git clone https://github.com/ethereum/go-ethereum
+이더리움 설치
+
+sudo apt-get update
+sudo apt-get upgrade
+
+
+ppa를 지정해둔 다음 sudo apt-get update 하면 지정한 거 까지 업데이트 된다.
+이 과정을 해주면 ethereum 을 깔 수 있따.
+
+
+sudo apt-get install software-properties-common
+
+sudo add-apt-repository -y ppa:ethereum/ethereum
+
+sudo apt-get update
+
+sudo apt-get install ethereum
+
+
+
+지금 우리 하는건 메타마스크가 가지고 있는 노드를 가지고 참여하는 것
+메타마스크가 연결하는게 찐이더리움이면 그곳에서 노드가 되는거고
+메타마스크가 연결하는게 롭스텐 처럼 짭이면 거기에서 노드가 되는거고
+
+메타마스크 없이 이더리움을 액세스 하는 것이 우리가 할 프로그래밍
+
+리믹스를 띄웠을 때 메타마스크 없이 우리 컴퓨터가 진짜 노드가 되어 이더리움 네트워크에 참여하면
+메타마스크를 쓰는것과 똑같음.
+
+
+웹 베이스 이더리움 편집기인 리믹스를 사용하여 이더리움 네트워크로 참여할 때 우리가 리믹스한테 문을 열어줘야 리믹스가 우리 컴퓨터를 통해서 이더리움 네트워크에 액세스 한다.
+리믹스가 우리 컴퓨터를 메타마스크처럼 사용하여 이더리움 네트워크로 들어가게 되는 것이다.
+
+
+https://geth.ethereum.org/getting-started/dev-mode
+이더리움 개발자를 위한 페이지 
+
+geth --datadir 내디렉토리이름 --rpc --dev --rpccorsdomain "https://remix.ethereum.org,http://remix.ethereum.org"
+
+
+
+sudo geth --datadir node --rpc --dev --rpccorsdomain "https://remix.ethereum.org,http://remix.ethereum.org"
+
+이러면 대기상태로 됨
+
+이 때 다른 터미널을 열어서 접속을 해봐야함.
+
+sudo geth attach /usr/local/bin/node/geth.ipc
+다른 터미널에 이걸 입력하면 프롬프트처럼 됨.
+
+
+
+
+personal.newAccount() 개인 테스트 어카운트 만들기.
+passphrase : 는 암호 입력하라는 뜻
+
+다 하면 밑 처 이상한 토큰 비스무리한게 뜸
+"0x06b262e3e41f2e83666ca7dd2d4d4cc593bf4658"
+
+
+> eth.sendTransaction({from:eth.coinbase, to:eth.accounts[1], value: web3.toWei(0.05, "ether")})
+이렇게 치면
+"0xc7d437a7c4b0f4e41e10a51fd239c62157b2beb33e2ed05d2d7bce354467509a"
+이런 식으로 이상한 말이 또 
+
+> eth.getBalance(eth.accounts[1])
+이걸 치면
+50000000000000000
+라고 뜸
+밸런스를 가져오는걸 보면 잔금을 가져온다는 거 같은데 
+난 저런 돈을 넣은 적이 없는걸?
+돈을 표현할 때 18개의 0을 때고 생각하라는 말이 있었던 것 같아서 보니 17자리이다. 0.5라고 생각하면 되나?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
